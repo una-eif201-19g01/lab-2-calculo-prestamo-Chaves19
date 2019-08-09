@@ -10,7 +10,17 @@
 #include <string>
 
 class calculoPrestamo{
+private:
     float monto;
+    float obtenerPorcentaje();
+    int calcularTiempoEnMeses();
+    float calcularInteresMensual();
+public:
+    CalculoPrestamo();
+    CalculoPrestamo(string);
+    string reporteCalculoPrestamo();
+    float getMonto();
+    void setMonto();
 };
 
 #endif //CALCULOPRESTAMO_CALCULOPRESTAMO_H
