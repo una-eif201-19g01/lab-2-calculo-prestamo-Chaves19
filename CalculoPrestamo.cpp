@@ -42,8 +42,9 @@ string calculoPrestamo::reporteCalculoPrestamo(string tiempoTXT, string porcenta
 	string reporte = ".";
 	int x = getMonto();
 	float y = obtenerPorcentaje(porcentajeTXT);
+	float z = calcularTiempoEnMeses(tiempoTXT);
 	float tasaAnual = calcularInteresMensual(x, tasaAnual);
-	for(int i=0;i<y;i++){
+	for(int i=0;i<z;i++){
 		reporte = "Tasa [ "; porcentajeTXT ;" ], Mes [ "; i ;" ], balance inicial [ "; x ;" ], interes [ "; tasaAnual ;" ], balance nuevo [ "; x + tasaAnual ;" ] \n";
 		x = x + y;
 	}
