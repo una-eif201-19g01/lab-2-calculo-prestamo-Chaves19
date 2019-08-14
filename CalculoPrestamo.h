@@ -1,5 +1,5 @@
 //
-// Created by Alonso Chaves  on 2019-08-12.
+// Created by Alonso Chaves  on 2019-08-14.
 //
 #ifndef CALCULOPRESTAMO_CALCULOPRESTAMO_H
 #define CALCULOPRESTAMO_CALCULOPRESTAMO_H
@@ -10,7 +10,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-class calculoPrestamo{
+class CalculoPrestamo{
 private:
 	float monto;
 	float obtenerPorcentaje(std::string porcentajeTXT);
