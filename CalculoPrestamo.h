@@ -13,13 +13,13 @@ using std::endl;
 class CalculoPrestamo {
 private:
     float monto;
-    float obtenerPorcentaje(std::string porcentajeTXT);
-    int calcularTiempoEnMeses(std::string);
+    float obtenerPorcentaje(string porcentajeTXT);
+    int calcularTiempoEnMeses(string);
     float calcularInteresMensual(float balance, float tasaAnual);
 public:
     calculoPrestamo();
     calculoPrestamo(float);
-    std::string reporteCalculoPrestamo(std::string tiempoTXT, std::string porcentajeTXT);
+    string reporteCalculoPrestamo(string tiempoTXT, string porcentajeTXT);
     float getMonto();
     void setMonto(float m);
 };
