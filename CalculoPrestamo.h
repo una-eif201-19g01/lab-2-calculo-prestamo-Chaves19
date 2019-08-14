@@ -10,18 +10,18 @@ using std::string;
 using std::cout;
 using std::endl;
 
-class CalculoPrestamo{
+class CalculoPrestamo {
 private:
-	float monto;
-	float obtenerPorcentaje(std::string porcentajeTXT);
-	int calcularTiempoEnMeses(std::string);
-	float calcularInteresMensual(float balance, float tasaAnual);
+    float monto;
+    float obtenerPorcentaje(std::string porcentajeTXT);
+    int calcularTiempoEnMeses(std::string);
+    float calcularInteresMensual(float balance, float tasaAnual);
 public:
-	calculoPrestamo();
-	calculoPrestamo(float);
-	string reporteCalculoPrestamo(string tiempoTXT, string porcentajeTXT);
-	float getMonto();
-	void setMonto(float m);
+    calculoPrestamo();
+    calculoPrestamo(float);
+    std::string reporteCalculoPrestamo(std::string tiempoTXT, std::string porcentajeTXT);
+    float getMonto();
+    void setMonto(float m);
 };
 
 #endif //CALCULOPRESTAMO_CALCULOPRESTAMO_H
