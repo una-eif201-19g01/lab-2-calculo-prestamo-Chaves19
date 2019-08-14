@@ -31,11 +31,11 @@ float CalculoPrestamo::calcularInteresMensual(float balance, float tasaAnual) {
     return (balance * (tasaAnual * 12));
 }
 
-CalculoPrestamo::calculoPrestamo() {
+CalculoPrestamo::CalculoPrestamo() {
     monto = 100000;
 }
 
-CalculoPrestamo::calculoPrestamo(float m) {
+CalculoPrestamo::CalculoPrestamo(float m) {
     monto = m;
 }
 
