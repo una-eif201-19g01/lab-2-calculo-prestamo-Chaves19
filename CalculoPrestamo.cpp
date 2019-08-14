@@ -3,58 +3,61 @@
 //
 #include "CalculoPrestamo.h"
 
-float calculoPrestamo::obtenerPorcentaje(string porcentajeTXT) {
-	float tasaAnual = 0;
-	porcentajeTXT = porcentajeTXT.substr(0,4);
-	tasaAnual = std::stof(porcentajeTXT);
-	tasaAnual = tasaAnual * 100;
-	return tasaAnual;
+float CalculoPrestamo::obtenerPorcentaje(std::string porcentajeTXT) {
+	int porc = 0;
+	porc = porcentajeTXT.find("%");
+	porcentajeTXT = porcentajeTXT.substr(0,porc);
+	float tasaAnual = std::stof(porcentajeTXT);
+	return tasaAnual * 100;
 }
 
-int calculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
-	int x = 0;
-	if(tiempoTXT.find("A")== true){
-		tiempoTXT = tiempoTXT.substr(0,1);
-		x = std::stoi(tiempoTXT);
-		return x * 12;
-	}
-	else{
-		tiempoTXT = tiempoTXT.substr(0,2);
-		x = std::stoi(tiempoTXT);
-		return x;
-	}
+int CalculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
+    int x = 0;
+    int meses = 0;
+    if(tiempoTXT.find("A") == true){
+	x = (tiempoTXT.find("A");
+        tiempoTXT.substr(0, x);
+	meses = std::stoi(tiempoTXT);
+	meses = meses * 12;
+    }else{
+        x = (tiempoTXT.find("M");
+        tiempoTXT = tiempoTXT.substr(0,x);
+        meses = std::stoi(tiempoTXT);	
+    }
+    return meses;
 }
 
-float calculoPrestamo::calcularInteresMensual(float balance, float tasaAnual) {
-	return balance * tasaAnual;
-	
+float CalculoPrestamo::calcularInteresMensual(float balance, float tasaAnual) {
+	return (balance * (tasaAnual * 12));	
 }
 
-calculoPrestamo::calculoPrestamo() {
-	setMonto(monto = 100000);
+CalculoPrestamo::calculoPrestamo() {
+	monto = 100000;
 }
 
-calculoPrestamo::calculoPrestamo(float m) {
-	setMonto(monto = m);
+CalculoPrestamo::calculoPrestamo(float m){
+	monto = m;
 }
 //std::string reporte = "texto \n"
-string calculoPrestamo::reporteCalculoPrestamo(string tiempoTXT, string porcentajeTXT) {
-	string reporte = ".";
-	int x = getMonto();
-	float y = obtenerPorcentaje(porcentajeTXT);
-	float z = calcularTiempoEnMeses(tiempoTXT);
-	float tasaAnual = calcularInteresMensual(x, tasaAnual);
-	for(int i=0;i<z;i++){
-		reporte = "Tasa [ "; porcentajeTXT ;" ], Mes [ "; i ;" ], balance inicial [ "; x ;" ], interes [ "; tasaAnual ;" ], balance nuevo [ "; x + tasaAnual ;" ] \n";
-		x = x + y;
-	}
-	return reporte;
+std::string CalculoPrestamo::reporteCalculoPrestamo(std::string tiempoTXT, std::string porcentajeTXT) {
+    std::string reporte = ".";
+    float balance = getMonto();
+    float balanceNuevo = 0;
+    float y = obtenerPorcentaje(porcentajeTXT);
+    float z = calcularTiempoEnMeses(tiempoTXT);
+    for(int i=0;i<z;i++){
+	balance = balanceNuevo;
+        float interes = calcularInteresMensual(balance, y);
+        balanceNuevo = balance + interes;
+        reporte = reporte + "Tasa [ "+ porcentajeTXT +" ], Mes [ "+ std::to_string(i + 1) +" ], balance inicial [ "+ std::to_string(balance) +" ], interes [ "+ std::to_string(interes) +" ], balance nuevo [ " + std::to_string(balanceNuevo) +" ] \n";
+    }
+    return reporte;
 }
 
-float calculoPrestamo::getMonto() {
+float CalculoPrestamo::getMonto() {
 	return monto;
 }
 
-void calculoPrestamo::setMonto(float m) {
+void CalculoPrestamo::setMonto(float m) {
 	monto = m;
 }
