@@ -15,7 +15,7 @@ int CalculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
     int x = 0;
     int meses = 0;
     if(tiempoTXT.find("A") == true){
-	x = (tiempoTXT.find("A");
+	x = tiempoTXT.find("A");
         tiempoTXT.substr(0, x);
 	meses = std::stoi(tiempoTXT);
 	meses = meses * 12;
