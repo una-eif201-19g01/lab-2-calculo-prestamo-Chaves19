@@ -17,8 +17,8 @@ private:
     int calcularTiempoEnMeses(string);
     float calcularInteresMensual(float balance, float tasaAnual);
 public:
-    calculoPrestamo();
-    calculoPrestamo(float);
+    CalculoPrestamo();
+    CalculoPrestamo(float);
     string reporteCalculoPrestamo(string tiempoTXT, string porcentajeTXT);
     float getMonto();
     void setMonto(float m);
