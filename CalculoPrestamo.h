@@ -5,23 +5,21 @@
 #define CALCULOPRESTAMO_CALCULOPRESTAMO_H
 #include <cstdint>
 #include <string>
-#include <iostream>
 using std::string;
-using std::cout;
-using std::endl;
+using std::find;
 
 class CalculoPrestamo {
 private:
     float monto;
-    float obtenerPorcentaje(string porcentajeTXT);
+    float obtenerPorcentaje(string);
     int calcularTiempoEnMeses(string);
-    float calcularInteresMensual(float balance, float tasaAnual);
+    float calcularInteresMensual(float, float);
 public:
     CalculoPrestamo();
-    CalculoPrestamo(float);
-    string reporteCalculoPrestamo(string tiempoTXT, string porcentajeTXT);
+    CalculoPrestamo(int64_t);
+    string reporteCalculoPrestamo(string, string);
     float getMonto();
-    void setMonto(float m);
+    void setMonto(float );
 };
 
 #endif //CALCULOPRESTAMO_CALCULOPRESTAMO_H
