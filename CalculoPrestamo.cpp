@@ -1,6 +1,7 @@
 //
 // Created by Alonso Chaves  on 2019-08-12.
 //
+#include <iostream>
 #include "CalculoPrestamo.h"
 
 float CalculoPrestamo::obtenerPorcentaje(string porcentajeTXT) {
@@ -8,7 +9,7 @@ float CalculoPrestamo::obtenerPorcentaje(string porcentajeTXT) {
     porc = porcentajeTXT.find("%");
     porcentajeTXT = porcentajeTXT.substr(0, porc);
     float tasaAnual = std::stof(porcentajeTXT);
-    return tasaAnual * 100;
+    return tasaAnual / 100;
 }
 
 int CalculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
@@ -16,7 +17,7 @@ int CalculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
     int meses = 0;
     if (tiempoTXT.find("A") == true) {
         x = tiempoTXT.find("A");
-        tiempoTXT.substr(0, x);
+        tiempoTXT = tiempoTXT.substr(0, x);
         meses = std::stoi(tiempoTXT);
         meses = meses * 12;
     } else {
@@ -28,14 +29,14 @@ int CalculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
 }
 
 float CalculoPrestamo::calcularInteresMensual(float balance, float tasaAnual) {
-    return (balance * (tasaAnual * 12));
+    return (balance * (tasaAnual / 12));
 }
 
 CalculoPrestamo::CalculoPrestamo() {
-    monto = 100000;
+    monto = 0;
 }
 
-CalculoPrestamo::CalculoPrestamo(float m) {
+CalculoPrestamo::CalculoPrestamo(int64_t m) {
     monto = m;
 }
 
