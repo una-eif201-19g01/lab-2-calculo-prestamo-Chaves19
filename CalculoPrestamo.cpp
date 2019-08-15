@@ -9,7 +9,7 @@ float CalculoPrestamo::obtenerPorcentaje(string porcentajeTXT) {
     porc = porcentajeTXT.find("%");
     porcentajeTXT = porcentajeTXT.substr(0, porc);
     float tasaAnual = std::stof(porcentajeTXT);
-    return tasaAnual / 100;
+    return (tasaAnual / 100);
 }
 
 int CalculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
