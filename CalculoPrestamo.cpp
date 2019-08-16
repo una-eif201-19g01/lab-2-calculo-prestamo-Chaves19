@@ -6,9 +6,14 @@
 
 float CalculoPrestamo::obtenerPorcentaje(string porcentajeTXT) {
     int porc = 0;
-    porc = porcentajeTXT.find("%");
-    porcentajeTXT = porcentajeTXT.substr(0, porc);
-    float tasaAnual = std::stof(porcentajeTXT);
+    if(porcentajeTXT.find("%") != -1 ){
+        porc = porcentajeTXT.find("%");
+        porcentajeTXT = porcentajeTXT.substr(0, porc);
+        float tasaAnual = std::stof(porcentajeTXT);
+    }else{ 
+        porcentajeTXT = porcentajeTXT.substr(0, porcentajeTXT.size());
+        float tasaAnual = std::stof(porcentajeTXT);
+    } 
     return (tasaAnual * 100);
 }
 
