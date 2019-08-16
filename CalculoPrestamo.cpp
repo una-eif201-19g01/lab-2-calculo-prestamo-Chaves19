@@ -5,16 +5,12 @@
 #include "CalculoPrestamo.h"
 
 float CalculoPrestamo::obtenerPorcentaje(string porcentajeTXT) {
-    int porc = 0;
-    if(porcentajeTXT.find("%") != -1 ){
-        porc = porcentajeTXT.find("%");
-        porcentajeTXT = porcentajeTXT.substr(0, porc);
-        float tasaAnual = std::stof(porcentajeTXT);
-    }else{ 
-        porcentajeTXT = porcentajeTXT.substr(0, porcentajeTXT.size());
-        float tasaAnual = std::stof(porcentajeTXT);
-    } 
-    return (tasaAnual * 100);
+	int porc = 0;
+	float tasaAnual = 0;
+	porc = porcentajeTXT.find("%");
+	porcentajeTXT = porcentajeTXT.substr(0, porc);
+	tasaAnual = std::stof(porcentajeTXT);
+	return (tasaAnual / 100);	
 }
 
 int CalculoPrestamo::calcularTiempoEnMeses(string tiempoTXT) {
@@ -53,9 +49,9 @@ string CalculoPrestamo::reporteCalculoPrestamo(string tiempoTXT, string porcenta
     float y = obtenerPorcentaje(porcentajeTXT);
     float z = calcularTiempoEnMeses(tiempoTXT);
     for (int i = 0; i < z; i++) {
-        balance = balanceNuevo;
         float interes = calcularInteresMensual(balance, y);
-        balanceNuevo = balance + interes;
+	balanceNuevo = balance + interes;
+	balance = balanceNuevo;
         reporte = reporte + "Tasa [ " + porcentajeTXT + " ], Mes [ " + std::to_string(i + 1) + " ], balance inicial [ " + std::to_string(balance) + " ], interes [ " + std::to_string(interes) + " ], balance nuevo [ " + std::to_string(balanceNuevo) + " ] \n";
     }
     return reporte;
